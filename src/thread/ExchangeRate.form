@@ -68,15 +68,15 @@
                   </Group>
                   <Component id="lblBase" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="351" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
               <Component id="loading" min="-2" pref="17" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="127" max="32767" attributes="0"/>
+                  <EmptySpace pref="137" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="323" max="-2" attributes="0"/>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>

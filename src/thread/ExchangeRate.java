@@ -40,6 +40,10 @@ public class ExchangeRate extends javax.swing.JFrame {
 
     public ExchangeRate() {
         initComponents();
+        
+        initBase();
+        startClock();
+        loading(false);
     }
 
     /**
@@ -115,14 +119,14 @@ public class ExchangeRate extends javax.swing.JFrame {
                         .addComponent(cmbBase)
                         .addGap(1, 1, 1))
                     .addComponent(lblBase))
-                .addGap(351, 351, 351)
+                .addGap(364, 364, 364)
                 .addComponent(loading, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(127, Short.MAX_VALUE)
+                    .addContainerGap(137, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(49, Short.MAX_VALUE)))
+                    .addContainerGap(59, Short.MAX_VALUE)))
         );
 
         pack();
@@ -234,6 +238,32 @@ public class ExchangeRate extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         return response;
+    }
+
+    class Exchange extends SwingWorker<Object, Object> {
+
+        public Exchange(String name) {
+            setName(name);
+            System.out.println(name + " => Dijalankan!");
+        }
+
+        @Override
+        protected Object doInBackground() throws Exception {
+            String base
+                    = cmbBase.getSelectedItem().toString();
+            addResponseToList(base);
+            return 0;
+        }
+
+        @Override
+        protected void done() {
+            model.clear();
+            rates.forEach((rate) -> {
+                model.addElement(rate);
+            });
+            loading(false);
+            System.out.println(getName() + " => Dihentikan!");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
