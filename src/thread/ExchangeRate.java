@@ -185,6 +185,57 @@ public class ExchangeRate extends javax.swing.JFrame {
             }
         }, 0, 1000);
     }
+
+    private void loading(boolean b) {
+        loading.setVisible(b);
+    }
+
+    private void addResponseToList(String base) {
+        CurrencyConversionResponse response
+                = getResponse(API_PROVDIER + "" + "/latest?" + "apikey=YOUR_API_KEY" + "&base=" + base + ""
+                );
+        if (response != null) {
+            rates.clear();
+            for (String str : code) {
+                String rate = response.getRates().get(str);
+                String item = str + "\t: " + rate;
+                rates.add(item);
+            }
+        }
+    }
+
+    private static CurrencyConversionResponse
+            getResponse(String strUrl) {
+        CurrencyConversionResponse response = null;
+        Gson gson = new Gson();
+        StringBuilder sb = new StringBuilder();
+        if (strUrl == null || strUrl.isEmpty()) {
+            System.out.println("Application Error");
+            return null;
+        }
+        URL url;
+        try {
+            url = new URL(strUrl);
+            HttpURLConnection connection
+                    = (HttpURLConnection) url.openConnection();
+            try (InputStream stream
+                    = connection.getInputStream()) {
+                int data = stream.read();
+                while (data != -1) {
+                    sb.append((char) data);
+                    data = stream.read();
+                }
+            }
+            response = gson.fromJson(sb.toString(),
+                    CurrencyConversionResponse.class);
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return response;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbBase;
     private javax.swing.JScrollPane jScrollPane1;
