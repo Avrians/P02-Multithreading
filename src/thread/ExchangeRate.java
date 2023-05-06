@@ -1,3 +1,5 @@
+package thread;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -28,9 +30,9 @@ public class ExchangeRate extends javax.swing.JFrame {
         lblBase = new javax.swing.JLabel();
         lblClock = new javax.swing.JLabel();
         pembatas = new javax.swing.JSeparator();
-        cmbBase = new javax.swing.JComboBox<>();
+        cmbBase = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ListRates = new javax.swing.JList<>();
+        ListRates = new javax.swing.JList<String>();
         loading = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +43,7 @@ public class ExchangeRate extends javax.swing.JFrame {
         lblClock.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblClock.setText("<CLOCK>");
 
-        cmbBase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbBase.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         ListRates.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
