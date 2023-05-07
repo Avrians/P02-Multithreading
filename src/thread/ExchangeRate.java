@@ -4,7 +4,7 @@ package thread;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -31,6 +31,13 @@ public class ExchangeRate extends javax.swing.JFrame {
     /**
      * Creates new form ExchangeRate
      */
+    String API_PROVDIER = "https://api.apilayer.com/exchangerates_data";
+    String[] code = {"MXN", "AUD", "HKD", "RON", "HRK", "CHF", "IDR",
+        "CAD", "USD", "JPY", "BRL", "PHP", "CZK", "NOK", "INR", "PLN", "ISK", "MYR", "ZAR", "ILS", "GBP", "SGD", "HUF", "EUR", "CNY", "TRY", "SEK", "RUB", "NZD", "KRW", "THB", "BGN", "DKK"};
+    
+    DefaultListModel<String> model = new DefaultListModel<>();
+List<String> rates = new ArrayList<>();
+
     public ExchangeRate() {
         initComponents();
     }
